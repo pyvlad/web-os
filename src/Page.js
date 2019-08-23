@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { connect } from 'react-redux'
 import { 
   Toolbar,
   Typography
@@ -14,10 +15,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  main: {
+  main: ({backgroundColor, backgroundImageUrl}) => ({
     flex: 1,
-    backgroundColor: "#ddf"
-  },
+    backgroundColor: (backgroundImageUrl ? "transparent" : backgroundColor),
+    backgroundImage: (backgroundImageUrl ? `url(${backgroundImageUrl})` : null)
+  }),
   toolbar: {
     flex: 0,
     backgroundColor: "#aaf",
@@ -27,9 +29,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-export default () => {
-  const classes = useStyles()
-
+const Page = ({backgroundColor, backgroundImageUrl}) => {
+  const classes = useStyles({backgroundColor, backgroundImageUrl})
+  console.log(backgroundImageUrl)
   return (
     <div className={classes.root}>
       <div className={classes.main}>
@@ -49,3 +51,12 @@ export default () => {
     </div>
   )
 }
+
+const mapStateToProps = (state) => (
+  {
+    backgroundColor: state.backgroundColor,
+    backgroundImageUrl: state.backgroundImageUrl
+  }
+)
+
+export default connect(mapStateToProps)(Page)

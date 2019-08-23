@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { connect } from 'react-redux'
 import {
   Button,
   Dialog,
@@ -31,8 +32,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 
-export default ({ isOpen, handleClose }) => {
+const SettingsDialog = (props) => {
   const classes = useStyles()
+
+  console.log(props)
+  const { 
+    isOpen, 
+    handleClose,
+    backgroundColor, 
+    backgroundImageUrl
+  } = props
 
   return (
     <Dialog fullScreen open={isOpen} onClose={handleClose} TransitionComponent={Transition}>
@@ -51,7 +60,10 @@ export default ({ isOpen, handleClose }) => {
       </AppBar>
       <List>
         <ListItem button>
-          <ListItemText primary="Background" secondary="Grey" />
+          <ListItemText 
+            primary="Background" 
+            secondary={backgroundImageUrl ? backgroundImageUrl : backgroundColor} 
+          />
         </ListItem>
         <Divider />
         <ListItem button>
@@ -61,3 +73,11 @@ export default ({ isOpen, handleClose }) => {
     </Dialog>
   )
 }
+
+const mapStateToProps = (state) => (
+  {
+    backgroundColor: state.backgroundColor,
+    backgroundImageUrl: state.backgroundImageUrl
+  }
+)
+export default connect(mapStateToProps)(SettingsDialog)
