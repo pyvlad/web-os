@@ -16,11 +16,11 @@ const useStyles = makeStyles(theme => ({
   },
   main: {
     flex: 1,
-    backgroundColor: "#ddd"
+    backgroundColor: "#ddf"
   },
   toolbar: {
     flex: 0,
-    backgroundColor: "#aaa",
+    backgroundColor: "#aaf",
     display: "flex",
     justifyContent: "space-between"
   }

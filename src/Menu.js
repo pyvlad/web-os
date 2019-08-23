@@ -7,21 +7,31 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Divider
+  Divider,
+  Icon,
+  Typography
 } from '@material-ui/core'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
+import SettingsDialog from './SettingsDialog'
 
 
 const useStyles = makeStyles(theme => ({
   menu: {
     width: 250
+  },
+  header: {
+    padding: theme.spacing(1, 2),
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText
   }
 }))
 
 
 export default () => {
   const classes = useStyles()
+
+  // drawer
   const [state, setState] = React.useState({ isOpen: false })
   const toggleDrawer = (isOpen) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -30,16 +40,40 @@ export default () => {
     setState({ isOpen: isOpen })
   }
 
+  // settings
+  const [isSettingsMenuOpen, setSettingsMenuOpen] = React.useState(false)
+  function handleSettingsMenuOpen() {
+    setSettingsMenuOpen(true)
+  }
+  function handleSettingsMenuClose() {
+    setSettingsMenuOpen(false)
+  }
+
   return (
     <React.Fragment>
-      <Button onClick={toggleDrawer(true)}>Menu</Button>
+      <Button onClick={toggleDrawer(true)}>
+        <Icon>dehaze</Icon>
+      </Button>
       <Drawer open={state.isOpen} onClose={toggleDrawer(false)}>
+        <div className={classes.header}>
+          <Typography variant="h4">
+            Menu
+          </Typography>
+        </div>
+        <Divider />
         <div
           className={classes.menu}
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
+          <List>
+            <ListItem button onClick={handleSettingsMenuOpen}>
+              <ListItemIcon><Icon>more_vert</Icon></ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
+          </List>
+          <Divider />
           <List>
             {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
               <ListItem button key={text}>
@@ -48,17 +82,12 @@ export default () => {
               </ListItem>
             ))}
           </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
         </div>
       </Drawer>
+      <SettingsDialog 
+        isOpen={isSettingsMenuOpen} 
+        handleClose={handleSettingsMenuClose}
+      />
     </React.Fragment>
   )
 }
