@@ -4,6 +4,7 @@ import {
   Toolbar,
   Typography
 } from '@material-ui/core'
+import Menu from './Menu'
 
 
 const useStyles = makeStyles(theme => ({
@@ -34,6 +35,7 @@ export default () => {
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
+        <Menu />
         <Typography variant="h4">
           Toolbar
         </Typography>
