@@ -5,6 +5,7 @@ import {
   Typography
 } from '@material-ui/core'
 import Menu from './Menu'
+import Clock from './Clock'
 
 
 const useStyles = makeStyles(theme => ({
@@ -19,7 +20,9 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     flex: 0,
-    backgroundColor: "#aaa"
+    backgroundColor: "#aaa",
+    display: "flex",
+    justifyContent: "space-between"
   }
 }))
 
@@ -38,6 +41,9 @@ export default () => {
         <Menu />
         <Typography variant="h4">
           Toolbar
+        </Typography>
+        <Typography variant="subtitle2">
+          <Clock />
         </Typography>
       </Toolbar>
     </div>
