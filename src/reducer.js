@@ -9,15 +9,13 @@ export default (state=initialState, action) => {
     case 'SET_BACKGROUND_COLOR': 
       return {
         ...state, 
-        backgroundColor: action.color, 
-        backgroundImageUrl: undefined
+        backgroundColor: action.color
       }
 
     case 'SET_BACKGROUND_IMAGE':
       return {
-        ...state, 
-        backgroundColor: undefined,
-        backgroundImageUrl: action.backgroundImageUrl
+        ...state,
+        backgroundImageUrl: action.url
       }
 
     default:

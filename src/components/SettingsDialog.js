@@ -15,6 +15,7 @@ import {
   Icon,
   Slide
 } from '@material-ui/core'
+import BackgroundForm from './BackgroundForm'
 
 
 const useStyles = makeStyles(theme => ({
@@ -35,13 +36,42 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const SettingsDialog = (props) => {
   const classes = useStyles()
 
-  console.log(props)
   const { 
     isOpen, 
     handleClose,
     backgroundColor, 
     backgroundImageUrl
   } = props
+
+  const [view, setView] = React.useState("main")
+
+  // TODO rewrite with switch
+  // TODO change view to main on close settings
+  let currentView;
+  if (view === "main") {
+    currentView = (
+      <List>
+        <ListItem button onClick={() => (setView("background"))}>
+          <ListItemText 
+            primary="Background" 
+            secondary={backgroundImageUrl ? backgroundImageUrl : backgroundColor} 
+          />
+        </ListItem>
+        <Divider />
+        <ListItem button>
+          <ListItemText primary="Colors" secondary="" />
+        </ListItem>
+      </List>
+    )
+  }
+  else if (view === "background") {
+    currentView = (
+      <BackgroundForm 
+        backgroundColor={backgroundColor}
+        backgroundImageUrl={backgroundImageUrl}
+      />
+    )
+  }
 
   return (
     <Dialog fullScreen open={isOpen} onClose={handleClose} TransitionComponent={Transition}>
@@ -53,23 +83,16 @@ const SettingsDialog = (props) => {
           <Typography variant="h6" className={classes.title}>
             App Settings
           </Typography>
-          <Button color="inherit" onClick={handleClose}>
-            save
-          </Button>
+          {
+            (view === "main") 
+            ? null 
+            : <Button color="inherit" onClick={() => (setView("main"))}>
+              back
+            </Button>
+          }
         </Toolbar>
       </AppBar>
-      <List>
-        <ListItem button>
-          <ListItemText 
-            primary="Background" 
-            secondary={backgroundImageUrl ? backgroundImageUrl : backgroundColor} 
-          />
-        </ListItem>
-        <Divider />
-        <ListItem button>
-          <ListItemText primary="Colors" secondary="" />
-        </ListItem>
-      </List>
+      {currentView}
     </Dialog>
   )
 }
