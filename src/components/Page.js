@@ -15,10 +15,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  main: ({backgroundColor, backgroundImageUrl}) => ({
+  main: ({bgType, bgColor, bgUrl}) => ({
     flex: 1,
-    backgroundColor: (backgroundImageUrl ? "transparent" : backgroundColor),
-    backgroundImage: (backgroundImageUrl ? `url(${backgroundImageUrl})` : null)
+    backgroundColor: (bgType === "color" ? bgColor : "transparent"),
+    backgroundImage: (bgType === "image" ? `url(${bgUrl})` : null)
   }),
   toolbar: {
     flex: 0,
@@ -29,15 +29,24 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Page = ({backgroundColor, backgroundImageUrl}) => {
-  const classes = useStyles({backgroundColor, backgroundImageUrl})
-  console.log(backgroundImageUrl)
+const Page = ({bgType, bgColor, bgUrl}) => {
+  const classes = useStyles({bgType, bgColor, bgUrl})
   return (
     <div className={classes.root}>
       <div className={classes.main}>
-        <Typography variant="h1">
-          Web OS
-        </Typography>
+        <div style={{textAlign: "center"}}>
+          <Typography 
+            variant="h2" 
+            component="span" 
+            style={{
+              backgroundColor: "RGBA(255,255,255,0.5)",
+              borderRadius: "0 0 30px 30px",
+              padding: "0px 30px 10px",
+            }}
+          >
+            WebOS
+          </Typography>
+        </div>
       </div>
       <Toolbar className={classes.toolbar}>
         <Menu />
@@ -54,8 +63,9 @@ const Page = ({backgroundColor, backgroundImageUrl}) => {
 
 const mapStateToProps = (state) => (
   {
-    backgroundColor: state.backgroundColor,
-    backgroundImageUrl: state.backgroundImageUrl
+    bgType: state.backgroundType,
+    bgColor: state.backgroundColor,
+    bgUrl: state.backgroundImageUrl
   }
 )
 

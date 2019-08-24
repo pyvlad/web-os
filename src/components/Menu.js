@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
-import SettingsDialog from './SettingsDialog'
+import SettingsDialog from './settings/SettingsDialog'
 
 
 const useStyles = makeStyles(theme => ({
@@ -75,12 +75,14 @@ export default () => {
           </List>
           <Divider />
           <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem button>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary="Files" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemText primary="Mail" />
+            </ListItem>
           </List>
         </div>
       </Drawer>
