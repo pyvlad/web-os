@@ -1,7 +1,7 @@
 const initialState = {
   backgroundType: "image",
   backgroundColor: "#ddf",
-  backgroundImageUrl: "/files/hubble-extreme-deep-field.png"
+  backgroundImageUrl: process.env.PUBLIC_URL + "/files/hubble-extreme-deep-field.jpg"
 }
 
 export default (state=initialState, action) => {
