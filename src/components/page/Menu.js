@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
-import SettingsDialog from './settings/SettingsDialog'
+import SettingsDialog from '../settings/SettingsDialog'
 
 
 const useStyles = makeStyles(theme => ({
