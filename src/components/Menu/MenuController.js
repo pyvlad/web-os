@@ -1,7 +1,7 @@
 import React from 'react'
 import MenuPresenter from './MenuPresenter'
 
-export default () => {
+export default (props) => {
   // drawer
   const [state, setState] = React.useState({ isOpen: false })
   const toggleDrawer = (isOpen) => event => {
@@ -21,6 +21,7 @@ export default () => {
   }
   
   return <MenuPresenter 
+    {...props}
     isDrawerOpen={state.isOpen}
     toggleDrawer={toggleDrawer}
     isSettingsMenuOpen={isSettingsMenuOpen}

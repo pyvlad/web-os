@@ -19,22 +19,28 @@ const useStyles = makeStyles(theme => ({
 
 
 export default (props) => {
-  const { handleWindowCreate } = props
+  const { windows, handleWindowCreate, handleWindowSelect } = props
   const classes = useStyles()
-  const windowContent = (
-    <div style={{backgroundColor: "pink"}}>
-      Hello, windows!
-    </div>
-  )
 
   return (
     <Toolbar className={classes.toolbar}>
-      <Menu />
-      <Button onClick={() => handleWindowCreate("New Window", windowContent)}>
-        <Typography variant="subtitle2">
-          New Window
-        </Typography>
-      </Button>
+      <Menu handleWindowCreate={handleWindowCreate} />
+      <div>
+        {
+          windows.map((w) => (
+            <Button 
+              variant="contained"
+              color="primary"
+              size="small"
+              style={{marginRight: 10}}
+              key={w.id} 
+              onClick={() => handleWindowSelect(w.id)}
+            >
+              {w.title}
+            </Button>
+          ))
+        }
+      </div>
       <Typography variant="subtitle2">
         <Clock />
       </Typography>

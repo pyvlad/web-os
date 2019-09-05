@@ -14,6 +14,7 @@ import {
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
 import SettingsDialog from '../SettingsDialog'
+import HelloWindows from '../apps/HelloWindows'
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,8 +29,18 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
+const getWindowName = (() => {
+  let counter = 0
+  return () => {
+    return "W " + (++counter)
+  }
+})()
+
+
+
 export default (props) => {
   const {
+    handleWindowCreate,
     isDrawerOpen,
     toggleDrawer,
     isSettingsMenuOpen,
@@ -64,6 +75,10 @@ export default (props) => {
           </List>
           <Divider />
           <List>
+            <ListItem button onClick={() => handleWindowCreate(getWindowName(), <HelloWindows/>)}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary="Example Window" />
+            </ListItem>
             <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary="Files" />

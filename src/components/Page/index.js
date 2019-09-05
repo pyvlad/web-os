@@ -1,2 +1,2 @@
-import PageController from './PageController'
-export default PageController
+import Page from './Page'
+export default Page

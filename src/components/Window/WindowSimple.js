@@ -55,6 +55,7 @@ export default (props) => {
   const {
     children,
     title,
+    isSelected,
     handleClose,
     handleMinimize,
     handleMaximize
@@ -74,7 +75,7 @@ export default (props) => {
             <CropSquareIcon/>
           </IconButton>
         </div>
-        <Typography variant="subtitle1" className={classes.topBarTitle}>
+        <Typography variant={isSelected ? "h4" : "subtitle1"} className={classes.topBarTitle}>
           { title }
         </Typography>
       </div>

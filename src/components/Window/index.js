@@ -1,4 +1,4 @@
-import WindowController from './WindowController'
+import WindowRnd from './WindowRnd'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => (
@@ -8,4 +8,4 @@ const mapStateToProps = (state) => (
   }
 )
 
-export default connect(mapStateToProps)(WindowController)
+export default connect(mapStateToProps)(WindowRnd)

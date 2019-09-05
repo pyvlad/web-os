@@ -1,6 +1,6 @@
 import React from 'react'
 import { Rnd } from 'react-rnd'
-import WindowPresenter from './WindowPresenter'
+import WindowSimple from './WindowSimple'
 
 
 export default class extends React.Component {
@@ -13,6 +13,7 @@ export default class extends React.Component {
       height: 200
     }
     this.handleMaximize = this.handleMaximize.bind(this)
+    this.handleMinimize = this.handleMinimize.bind(this)
   }
 
   handleMaximize() {
@@ -20,13 +21,27 @@ export default class extends React.Component {
       x: 0, 
       y: 0,
       width: props.desktopWidth,
-      height: props.desktopHeight
+      height: props.desktopHeight,
+      isHidden: false
     }))
   }
 
+  handleMinimize() {
+    this.setState({
+      isHidden: true
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (!prevProps.isSelected && prevState.isHidden && this.props.isSelected) {
+      this.setState({
+        isHidden: false
+      })
+    }
+  }
+
   render() {
-    const { children, title, handleClose } = this.props
-    const handleMinimize = () => {console.log("minimizing window")}
+    const { children, title, isSelected, handleClose, zIndex } = this.props
     
     return (
       <Rnd
@@ -49,16 +64,21 @@ export default class extends React.Component {
         minWidth={200}
         minHeight={200}
         bounds="parent"
-        style={{ overflow: "hidden" /* this prevents right scrollbar from appearing */}}
+        style={{ 
+          overflow: "hidden" /* this prevents right scrollbar from appearing */,
+          zIndex: zIndex,
+          display: this.state.isHidden ? "none" : "block"
+        }}
       >
-        <WindowPresenter 
+        <WindowSimple 
           title={title}
+          isSelected={isSelected}
           handleClose={handleClose} 
-          handleMinimize={handleMinimize} 
+          handleMinimize={this.handleMinimize} 
           handleMaximize={this.handleMaximize}
         >
           { children }
-        </WindowPresenter>
+        </WindowSimple>
       </Rnd>
     )
   }
