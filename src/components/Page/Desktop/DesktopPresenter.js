@@ -18,7 +18,7 @@ export default (props) => {
   const classes = useStyles({bgType, bgColor, bgUrl})
 
   return (
-    <div className={classes.desktop}>
+    <div className={classes.desktop} id="desktop">
       <div style={{textAlign: "center"}}>
         <Logo/>
       </div>
