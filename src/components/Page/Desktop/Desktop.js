@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { connect } from 'react-redux'
 import Logo from './Logo'
 
 
@@ -14,7 +13,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Desktop = ({children, bgType, bgColor, bgUrl}) => {
+export default (props) => {
+  const {children, bgType, bgColor, bgUrl} = props
   const classes = useStyles({bgType, bgColor, bgUrl})
 
   return (
@@ -26,14 +26,3 @@ const Desktop = ({children, bgType, bgColor, bgUrl}) => {
     </div>
   )
 }
-
-
-const mapStateToProps = (state) => (
-  {
-    bgType: state.backgroundType,
-    bgColor: state.backgroundColor,
-    bgUrl: state.backgroundImageUrl
-  }
-)
-
-export default connect(mapStateToProps)(Desktop)

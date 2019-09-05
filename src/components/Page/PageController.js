@@ -1,6 +1,6 @@
 import React from 'react'
-import PageDumb from './PageDumb'
-import Window from "../windows/Window"
+import PagePresenter from './PagePresenter'
+import Window from "../Window"
 
 
 export default class extends React.Component {
@@ -13,7 +13,7 @@ export default class extends React.Component {
     this.handleWindowClose = this.handleWindowClose.bind(this)
   }
 
-  handleWindowCreate(title) {
+  handleWindowCreate(title, children) {
     // TODO: potential duplicates on async?
     const id = (this.state.windows.length)
       ? Math.max(...this.state.windows.map((w) => w.id)) + 1 
@@ -24,7 +24,9 @@ export default class extends React.Component {
         key={id}
         title={title} 
         handleClose={() => this.handleWindowClose(id)} 
-      />,
+      >
+        { children }
+      </Window>,
       id
     }
     this.setState({
@@ -40,7 +42,7 @@ export default class extends React.Component {
   }
 
   render() {
-    return <PageDumb 
+    return <PagePresenter 
       windows={this.state.windows.map((w)=> w.component)} 
       handleWindowCreate={this.handleWindowCreate} 
     />

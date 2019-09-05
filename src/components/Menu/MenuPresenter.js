@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
-import SettingsDialog from '../settings/SettingsDialog'
+import SettingsDialog from '../SettingsDialog'
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,33 +28,22 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-export default () => {
+export default (props) => {
+  const {
+    isDrawerOpen,
+    toggleDrawer,
+    isSettingsMenuOpen,
+    handleSettingsMenuOpen,
+    handleSettingsMenuClose
+  } = props
   const classes = useStyles()
-
-  // drawer
-  const [state, setState] = React.useState({ isOpen: false })
-  const toggleDrawer = (isOpen) => event => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return
-    }
-    setState({ isOpen: isOpen })
-  }
-
-  // settings
-  const [isSettingsMenuOpen, setSettingsMenuOpen] = React.useState(false)
-  function handleSettingsMenuOpen() {
-    setSettingsMenuOpen(true)
-  }
-  function handleSettingsMenuClose() {
-    setSettingsMenuOpen(false)
-  }
 
   return (
     <React.Fragment>
       <Button onClick={toggleDrawer(true)}>
         <Icon>dehaze</Icon>
       </Button>
-      <Drawer open={state.isOpen} onClose={toggleDrawer(false)}>
+      <Drawer open={isDrawerOpen} onClose={toggleDrawer(false)}>
         <div className={classes.header}>
           <Typography variant="h4">
             Menu

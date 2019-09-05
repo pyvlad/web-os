@@ -1,11 +1,10 @@
 import React from 'react'
 import { Rnd } from 'react-rnd'
-import ControlledWindow from './ControlledWindow'
-import Content from './Content'
+import WindowPresenter from './WindowPresenter'
 
 
 export default (props) => {
-  const { title, handleClose } = props
+  const { children, title, handleClose } = props
   const handleMinimize = () => {console.log("minimizing window")}
   const handleMaximize = () => {console.log("maximizing window")}
   
@@ -22,14 +21,14 @@ export default (props) => {
       bounds="parent"
       style={{ overflow: "hidden" /* this prevents right scrollbar from appearing */}}
     >
-      <ControlledWindow 
+      <WindowPresenter 
         title={title}
         handleClose={handleClose} 
         handleMinimize={handleMinimize} 
         handleMaximize={handleMaximize}
       >
-        <Content />
-      </ControlledWindow>
+        { children }
+      </WindowPresenter>
     </Rnd>
   )
 }

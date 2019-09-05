@@ -10,7 +10,7 @@ import {
   Icon,
   Slide
 } from '@material-ui/core'
-import Main from './Main'
+import Menu from './Menu'
 import Background from './Background'
 
 
@@ -29,7 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 
-const SettingsDialog = (props) => {
+export default (props) => {
 
   const { 
     isOpen, 
@@ -50,7 +50,7 @@ const SettingsDialog = (props) => {
       break
     default:
       // main
-      currentComponent = <Main handleSelect={handleSelect} />
+      currentComponent = <Menu handleSelect={handleSelect} />
   }
 
   return (
@@ -84,5 +84,3 @@ const SettingsDialog = (props) => {
     </Dialog>
   )
 }
-
-export default SettingsDialog

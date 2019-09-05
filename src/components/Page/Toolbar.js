@@ -5,13 +5,13 @@ import {
   Typography,
   Button
 } from '@material-ui/core'
-import Menu from './Menu'
-import Clock from './Clock'
+import Menu from '../Menu'
+import Clock from '../Clock'
 
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
-    backgroundColor: "#aaf",
+    backgroundColor: theme.palette.primary.dark,
     display: "flex",
     justifyContent: "space-between"
   }
@@ -21,11 +21,16 @@ const useStyles = makeStyles(theme => ({
 export default (props) => {
   const { handleWindowCreate } = props
   const classes = useStyles()
+  const windowContent = (
+    <div style={{backgroundColor: "pink"}}>
+      Hello, windows!
+    </div>
+  )
 
   return (
     <Toolbar className={classes.toolbar}>
       <Menu />
-      <Button onClick={() => handleWindowCreate("New Window")}>
+      <Button onClick={() => handleWindowCreate("New Window", windowContent)}>
         <Typography variant="subtitle2">
           New Window
         </Typography>

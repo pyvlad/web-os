@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const PageDumb = (props) => {
+export default (props) => {
   const { windows, handleWindowCreate } = props
   const classes = useStyles()
 
@@ -36,6 +36,3 @@ const PageDumb = (props) => {
     </div>
   )
 }
-
-
-export default PageDumb

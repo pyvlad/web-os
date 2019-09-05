@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/styles'
 import { 
   TextField,
@@ -10,11 +9,6 @@ import {
   FormControl,
   FormLabel
 } from '@material-ui/core'
-import { 
-  setBackgroundType,
-  setBackgroundColor, 
-  setBackgroundImage 
-} from '../../actions'
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,18 +21,18 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Background = (props) => {
+export default (props) => {
 
   const {
-    backgroundType,
-    backgroundColor, 
-    backgroundImageUrl, 
+    bgType,
+    bgColor, 
+    bgUrl, 
     setBackgroundType,
     setBackgroundColor,
     setBackgroundImage
   } = props
   const classes = useStyles()
-  const [state, setState] = React.useState({backgroundType, backgroundColor, backgroundImageUrl})
+  const [state, setState] = React.useState({bgType, bgColor, bgUrl})
 
   const handleChange = (name) => ({target: {value}}) => {
     setState({
@@ -48,9 +42,9 @@ const Background = (props) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    setBackgroundType(state.backgroundType)
-    setBackgroundColor(state.backgroundColor)
-    setBackgroundImage(state.backgroundImageUrl)
+    setBackgroundType(state.bgType)
+    setBackgroundColor(state.bgColor)
+    setBackgroundImage(state.bgUrl)
   }
 
   return (
@@ -61,8 +55,8 @@ const Background = (props) => {
           aria-label="background-type"
           name="backgroundType"
           className={classes.group}
-          value={state.backgroundType}
-          onChange={handleChange('backgroundType')}
+          value={state.bgType}
+          onChange={handleChange('bgType')}
         >
           <FormControlLabel 
             value="color" 
@@ -70,10 +64,10 @@ const Background = (props) => {
             label="Color" 
           />
           <TextField 
-            disabled={ (state.backgroundType === "color") ? false : true } 
+            disabled={ (state.bgType === "color") ? false : true } 
             label="Background Color"
-            value={state.backgroundColor}
-            onChange={handleChange('backgroundColor')}
+            value={state.bgColor}
+            onChange={handleChange('bgColor')}
           />
           <FormControlLabel 
             value="image" 
@@ -81,10 +75,10 @@ const Background = (props) => {
             label="Image" 
           />
           <TextField 
-            disabled={ (state.backgroundType === "image") ? false : true } 
+            disabled={ (state.bgType === "image") ? false : true } 
             label="Background Image URL"
-            value={state.backgroundImageUrl}
-            onChange={handleChange('backgroundImageUrl')}
+            value={state.bgUrl}
+            onChange={handleChange('bgUrl')}
           />
         </RadioGroup>
         <FormHelperText>You can configure your background here.</FormHelperText>
@@ -96,21 +90,3 @@ const Background = (props) => {
     </form>
   )
 }
-
-const mapStateToProps = (state) => (
-  {
-    backgroundType: state.backgroundType,
-    backgroundColor: state.backgroundColor,
-    backgroundImageUrl: state.backgroundImageUrl
-  }
-)
-
-const mapDispatchToProps = (dispatch) => (
-  {
-    setBackgroundType: (bgType) => dispatch(setBackgroundType(bgType)),
-    setBackgroundColor: (color) => dispatch(setBackgroundColor(color)),
-    setBackgroundImage: (url) => dispatch(setBackgroundImage(url)),
-  }
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(Background)

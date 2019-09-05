@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 
 import reducer from '../reducer'
 import customTheme from '../themes'
-import Page from './page/Page'
+import Page from './Page'
 
 const reduxStore = createStore(reducer)
 

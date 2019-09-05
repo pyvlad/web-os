@@ -20,7 +20,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column"
   },
   contentWrapper: {
-    flex: 1
+    flex: 1,
+    backgroundColor: theme.palette.background.default,
+    height: "100%"
   },
   topBar: {
     backgroundColor: theme.palette.primary.main,
