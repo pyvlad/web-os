@@ -58,6 +58,7 @@ const Page = (props) => {
       <AppMenuList 
         openSettingsDialog={ props.openSettingsDialog }
         openExampleWindow={ () => handleWindowCreate(getWindowName(), "example") }
+        openClockWindow={ () => handleWindowCreate("Clock App", "clock") }
       />
     </AppMenu>
     <div>

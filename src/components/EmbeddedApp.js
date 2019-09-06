@@ -1,4 +1,5 @@
 import React from 'react'
+import ClockApp from './ClockApp'
 
 
 export default ({name}) => {
@@ -9,6 +10,8 @@ export default ({name}) => {
       <p>Hello, windows!</p>
       <p>Created/updated at {new Date().toLocaleTimeString()}...</p>
     </div>
+  } else if (name === "clock") {
+    component = <ClockApp size={300} />
   }
 
   return component

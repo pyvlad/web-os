@@ -9,7 +9,8 @@ import {
 } from '@material-ui/core'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
-import CropIcon from '@material-ui/icons/Crop'
+import LaunchIcon from '@material-ui/icons/Launch'
+import ScheduleIcon from '@material-ui/icons/Schedule'
 
 
 export default (props) => {
@@ -25,8 +26,12 @@ export default (props) => {
       <Divider />
       <List>
         <ListItem button onClick={props.openExampleWindow}>
-          <ListItemIcon><CropIcon /></ListItemIcon>
+          <ListItemIcon><LaunchIcon /></ListItemIcon>
           <ListItemText primary="Example Window" />
+        </ListItem>
+        <ListItem button onClick={props.openClockWindow}>
+          <ListItemIcon><ScheduleIcon /></ListItemIcon>
+          <ListItemText primary="Clock App" />
         </ListItem>
         <ListItem button>
           <ListItemIcon><InboxIcon /></ListItemIcon>

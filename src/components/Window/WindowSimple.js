@@ -75,7 +75,11 @@ export default (props) => {
             <CropSquareIcon/>
           </IconButton>
         </div>
-        <Typography variant={isSelected ? "h4" : "subtitle1"} className={classes.topBarTitle}>
+        <Typography 
+          variant={"h6"}
+          color={isSelected ? "textPrimary" : "textSecondary"}
+          className={classes.topBarTitle}
+        >
           { title }
         </Typography>
       </div>
