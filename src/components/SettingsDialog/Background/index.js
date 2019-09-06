@@ -1,11 +1,11 @@
 import Background from './Background'
 import { connect } from 'react-redux'
-
 import { 
   setBackgroundType,
   setBackgroundColor, 
   setBackgroundImage 
 } from '../../../actions'
+
 
 const mapStateToProps = (state) => (
   {

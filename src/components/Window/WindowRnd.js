@@ -4,44 +4,39 @@ import WindowSimple from './WindowSimple'
 
 
 export default class extends React.Component {
+  // TODO move this to Windows component
   constructor(props) {
     super(props)
     this.state = {
       x: 100,
       y: 100,
-      width: 200,
-      height: 200
+      width: 400,
+      height: 400
     }
     this.handleMaximize = this.handleMaximize.bind(this)
-    this.handleMinimize = this.handleMinimize.bind(this)
   }
 
   handleMaximize() {
-    this.setState((state, props) => ({
-      x: 0, 
-      y: 0,
-      width: props.desktopWidth,
-      height: props.desktopHeight,
-      isHidden: false
-    }))
-  }
-
-  handleMinimize() {
-    this.setState({
-      isHidden: true
+    this.setState((state, props) => {
+      props.handleSelect(props.id)
+      return {
+        x: 0, 
+        y: 0,
+        width: props.desktopWidth,
+        height: props.desktopHeight
+      }
     })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!prevProps.isSelected && prevState.isHidden && this.props.isSelected) {
-      this.setState({
-        isHidden: false
-      })
-    }
-  }
-
   render() {
-    const { children, title, isSelected, handleClose, zIndex } = this.props
+    const { 
+      children, 
+      title, 
+      isSelected, 
+      handleClose,
+      handleHide,
+      zIndex
+    } = this.props
     
     return (
       <Rnd
@@ -66,15 +61,14 @@ export default class extends React.Component {
         bounds="parent"
         style={{ 
           overflow: "hidden" /* this prevents right scrollbar from appearing */,
-          zIndex: zIndex,
-          display: this.state.isHidden ? "none" : "block"
+          zIndex: zIndex
         }}
       >
         <WindowSimple 
           title={title}
           isSelected={isSelected}
           handleClose={handleClose} 
-          handleMinimize={this.handleMinimize} 
+          handleMinimize={handleHide} 
           handleMaximize={this.handleMaximize}
         >
           { children }

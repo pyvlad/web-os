@@ -1,5 +1,5 @@
 import React from 'react'
-import DesktopPresenter from './DesktopPresenter'
+import DesktopDumb from './DesktopDumb'
 
 
 export default class extends React.Component {
@@ -22,6 +22,6 @@ export default class extends React.Component {
   }
 
   render() {
-    return <DesktopPresenter {...this.props} />
+    return <DesktopDumb {...this.props} />
   }
 }

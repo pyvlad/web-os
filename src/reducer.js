@@ -1,7 +1,8 @@
 const initialState = {
   backgroundType: "image",
   backgroundColor: "#ddf",
-  backgroundImageUrl: process.env.PUBLIC_URL + "/files/hubble-extreme-deep-field.jpg"
+  backgroundImageUrl: process.env.PUBLIC_URL + "/files/hubble-extreme-deep-field.jpg",
+  isSettingsMenuOpen: false
 }
 
 export default (state=initialState, action) => {
@@ -30,6 +31,12 @@ export default (state=initialState, action) => {
         ...state,
         desktopWidth: action.width,
         desktopHeight: action.height
+      }
+
+    case 'SET_IS_SETTINGS_MENU_OPEN':
+      return {
+        ...state,
+        isSettingsMenuOpen: action.value
       }
 
     default:

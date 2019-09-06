@@ -2,11 +2,9 @@
 Desktop.js contains plain standalone Desktop component. 
 The component is connected to Redux in index.js. 
 */
-import DesktopController from './DesktopController'
+import DesktopStateful from './DesktopStateful'
 import { connect } from 'react-redux'
-import { 
-  setDesktopSize
-} from '../../../actions'
+import { setDesktopSize } from '../../actions'
 
 
 const mapStateToProps = (state) => (
@@ -23,4 +21,4 @@ const mapDispatchToProps = (dispatch) => (
   }
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(DesktopController)
+export default connect(mapStateToProps, mapDispatchToProps)(DesktopStateful)
