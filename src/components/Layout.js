@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
     minHeight: '100vh'
   },
   desktop: {
-    flex: 1
+    flex: 1,
+    position: "relative"
   },
   toolbar: {
     flex: 0

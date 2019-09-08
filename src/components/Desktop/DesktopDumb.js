@@ -7,8 +7,14 @@ const useStyles = makeStyles(theme => ({
   desktop: ({bgType, bgColor, bgUrl}) => ({
     backgroundColor: (bgType === "color" ? bgColor : "transparent"),
     backgroundImage: (bgType === "image" ? `url(${bgUrl})` : null),
-    position: "relative",   // required by rnd window bounds = "parent",
-    height: "100%"          // take full height of the container
+    // take full height of the container (height: "100%" doesn't work in Chrome)
+    position: "absolute",   
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+    // note: rnd window 'bounds = "parent"' require this 
+    // to be a positioned element as well (absolute or relative) 
   })
 }))
 
