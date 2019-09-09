@@ -33,7 +33,9 @@ export default (props) => {
         windows={windows}
         handleWindowSelect = {handleWindowSelect}
       />
-      <ToolbarClock />
+      <ToolbarClock 
+        handleWindowCreate = {handleWindowCreate} 
+      />
     </Toolbar>
   )
 }

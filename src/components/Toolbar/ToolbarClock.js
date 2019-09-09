@@ -1,8 +1,19 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import { 
+  Button,
+  Typography 
+} from '@material-ui/core'
 
 
-export default class extends React.Component {
+const useStyles = makeStyles(theme => ({
+  time: {
+    color: theme.palette.primary.contrastText
+  }
+}))
+
+
+class ClockTime extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,13 +34,22 @@ export default class extends React.Component {
   }
   
   render() {
-    return (
+    return <span>{this.state.currentTime.toLocaleTimeString()}</span>
+  }
+}
+
+export default (props) => {
+  const { handleWindowCreate } = props
+  const classes = useStyles()
+
+  return (
+    <Button onClick={() => handleWindowCreate("Clock App", "clock")}>
       <Typography 
         variant="subtitle2" 
-        className="clock"
+        className={classes.time}
       >
-        {this.state.currentTime.toLocaleString()}
+        <ClockTime />
       </Typography>
-    )
-  }
+    </Button>
+  )
 }
