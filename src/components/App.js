@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 
 import reducer from '../reducer'
 import customTheme from '../themes'
-import WindowsManager from './WindowsManager'
+import PageWindows from './PageWindows'
 
 const reduxStore = createStore(reducer)
 
@@ -17,7 +17,7 @@ export default () => {
     <Provider store={reduxStore} >
       <ThemeProvider theme={customTheme}>
         <CssBaseline />
-        <WindowsManager />
+        <PageWindows />
       </ThemeProvider>
     </Provider>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from './Page'
+import PageComposed from './PageComposed'
 
 
 // Helper functions
@@ -103,7 +103,7 @@ export default class extends React.Component {
   }
 
   render() {
-    return <Page 
+    return <PageComposed 
       windows={this.state.windows} 
       selectedWindow={this.state.selectedWindow}
       handleWindowCreate={this.handleWindowCreate} 

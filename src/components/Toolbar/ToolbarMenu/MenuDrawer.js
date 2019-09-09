@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 250
   },
+  button: {
+    color: theme.palette.primary.contrastText
+  },
   header: {
     padding: theme.spacing(1, 2),
     backgroundColor: theme.palette.primary.main,
@@ -37,7 +40,7 @@ export default (props) => {
   
   return (
     <React.Fragment>
-      <Button onClick={toggleDrawer(true)}>
+      <Button onClick={toggleDrawer(true)} className={classes.button}>
         <Icon>dehaze</Icon>
       </Button>
       <Drawer open={state.isOpen} onClose={toggleDrawer(false)}>

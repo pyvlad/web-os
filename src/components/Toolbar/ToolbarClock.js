@@ -1,4 +1,5 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
 
 
 export default class extends React.Component {
@@ -22,6 +23,13 @@ export default class extends React.Component {
   }
   
   render() {
-    return <span>{this.state.currentTime.toLocaleString()}</span>
+    return (
+      <Typography 
+        variant="subtitle2" 
+        className="clock"
+      >
+        {this.state.currentTime.toLocaleString()}
+      </Typography>
+    )
   }
 }

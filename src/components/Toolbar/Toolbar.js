@@ -2,6 +2,10 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Toolbar } from '@material-ui/core'
 
+import ToolbarMenu from './ToolbarMenu'
+import ToolbarClock from './ToolbarClock'
+import ToolbarWindows from './ToolbarWindows'
+
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -13,12 +17,23 @@ const useStyles = makeStyles(theme => ({
 
 
 export default (props) => {
-  const { children } = props
+  const {
+    windows,
+    handleWindowCreate,
+    handleWindowSelect
+  } = props
   const classes = useStyles()
   
   return (
     <Toolbar className={classes.toolbar}>
-      { children }
+      <ToolbarMenu 
+        handleWindowCreate = {handleWindowCreate} 
+      />
+      <ToolbarWindows 
+        windows={windows}
+        handleWindowSelect = {handleWindowSelect}
+      />
+      <ToolbarClock />
     </Toolbar>
   )
 }
