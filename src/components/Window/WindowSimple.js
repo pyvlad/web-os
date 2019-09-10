@@ -21,8 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   contentWrapper: {
     flex: 1,
-    backgroundColor: theme.palette.background.default,
-    height: "100%"
+    backgroundColor: theme.palette.background.default
   },
   topBar: {
     backgroundColor: theme.palette.primary.main,
