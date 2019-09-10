@@ -1,6 +1,7 @@
 import React from 'react'
-import ClockApp from './ClockApp'
 import ExampleApp from './ExampleApp'
+import ClockApp from './ClockApp'
+import MailApp from './MailApp'
 
 
 export default (props) => {
@@ -12,6 +13,9 @@ export default (props) => {
 
     case 'clock':
       return <ClockApp size={300} />
+
+    case 'mail':
+      return <MailApp />
 
     default:
       return null
