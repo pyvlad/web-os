@@ -2,6 +2,7 @@ import React from 'react'
 import ExampleApp from './ExampleApp'
 import ClockApp from './ClockApp'
 import MailApp from './MailApp'
+import FilesApp from './FilesApp'
 
 
 export default (props) => {
@@ -16,6 +17,9 @@ export default (props) => {
 
     case 'mail':
       return <MailApp />
+
+    case 'simple_files':
+      return <FilesApp />
 
     default:
       return null

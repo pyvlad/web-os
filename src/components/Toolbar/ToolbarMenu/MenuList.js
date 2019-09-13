@@ -57,6 +57,10 @@ const AppMenuList = (props) => {
           <ListItemIcon><InboxIcon /></ListItemIcon>
           <ListItemText primary="Files" />
         </ListItem>
+        <ListItem button onClick={() => handleWindowCreate("Files (Browser Viewer)", "simple_files")}>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          <ListItemText primary="Files (Browser Viewer)" />
+        </ListItem>
         <ListItem button onClick={() => handleWindowCreate("Mail", "mail")}>
           <ListItemIcon><MailIcon /></ListItemIcon>
           <ListItemText primary="Mail" />
