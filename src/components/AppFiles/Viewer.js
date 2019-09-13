@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+
 export default (props) => {
   const { link } = props
   const classes = useStyles()
@@ -22,9 +23,9 @@ export default (props) => {
   return (
     <object
       data={link} 
-      type="application/pdf" // TODO link won't work on github.io
+      type="application/pdf"
       width="100%"
-      height="99%"
+      height="98%" // TODO hide right scrollbar
     >
       <Typography variant="subtitle1" className={classes.message}>
         Rendering failed. <Link href={ link }>Download file</Link>.
