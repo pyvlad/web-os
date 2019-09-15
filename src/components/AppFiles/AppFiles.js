@@ -1,7 +1,8 @@
 import React from 'react'
 import Layout from './Layout'
 import Explorer from './Explorer'
-import Viewer from './Viewer'
+import ViewerBasic from './ViewerBasic'
+import ViewerCustom from './ViewerCustom'
 import { Typography } from '@material-ui/core'
 
 import apiService from './apiService'
@@ -9,6 +10,7 @@ import apiService from './apiService'
 
 const AppDumb = (props) => {
   const {
+    viewerType,
     API,
     folderId,
     fileUrl,
@@ -21,15 +23,22 @@ const AppDumb = (props) => {
     handleFileSelect={handleFileSelect}
   />
 
-  const viewer = <Viewer link={fileUrl} />
+  const viewer = (viewerType === "basic")
+    ? <ViewerBasic fileUrl={fileUrl} />
+    : <ViewerCustom fileUrl={fileUrl} />
 
   const header = (
     <React.Fragment>
       <Typography variant="h6">
-        Welcome to Simple File Viewer! 
+        Welcome to {viewerType} File Viewer! 
       </Typography>
       <Typography variant="body1">
-        This viewer uses PDF viewer built into your browser.
+        {
+          (viewerType === "basic")
+          ? "This viewer uses PDF viewer built into your browser."
+          : "This viewer uses custom PDF viewer built with react-pdf."
+        }
+        
       </Typography>
     </React.Fragment>
   )
@@ -62,7 +71,10 @@ export default class extends React.Component {
   }
 
   render() {
+    const { viewerType } = this.props
+
     return <AppDumb 
+      viewerType={viewerType}
       folderId={this.state.folderId}
       API={this.API}
       handleFileSelect={this.handleFileSelect}

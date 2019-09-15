@@ -53,13 +53,13 @@ const AppMenuList = (props) => {
           <ListItemIcon><ScheduleIcon /></ListItemIcon>
           <ListItemText primary="Clock" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => handleWindowCreate("Files (Custom)", "customFileViewer")}>
           <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary="Files" />
+          <ListItemText primary="Files (Custom)" />
         </ListItem>
-        <ListItem button onClick={() => handleWindowCreate("Files (Browser Viewer)", "simple_files")}>
+        <ListItem button onClick={() => handleWindowCreate("Files (Basic)", "basicFileViewer")}>
           <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary="Files (Browser Viewer)" />
+          <ListItemText primary="Files (Basic)" />
         </ListItem>
         <ListItem button onClick={() => handleWindowCreate("Mail", "mail")}>
           <ListItemIcon><MailIcon /></ListItemIcon>

@@ -10,7 +10,7 @@ export default () => {
       <Route path="/" exact 
         render={(props) => <PageWindows {...props} />}
       />
-      <Route path="/files/" exact
+      <Route path="/files/:viewerType"
         render={(props) => <AppFiles {...props}/>}
       />
       <Route render={()=>(<div>404 NOT FOUND</div>)}/>

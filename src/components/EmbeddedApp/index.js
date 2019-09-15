@@ -18,8 +18,11 @@ export default (props) => {
     case 'mail':
       return <MailApp />
 
-    case 'simple_files':
-      return <FilesApp />
+    case 'basicFileViewer':
+      return <FilesApp viewerType="basic" />
+
+    case 'customFileViewer':
+      return <FilesApp viewerType="custom" />
 
     default:
       return null

@@ -11,10 +11,10 @@ const useStyles = makeStyles(theme => ({
 
 
 export default (props) => {
-  const { link } = props
+  const { fileUrl } = props
   const classes = useStyles()
 
-  if (!link) {
+  if (!fileUrl) {
     return <Typography variant="h4" align="center" className={classes.message}>
       File Viewer
     </Typography>
@@ -22,13 +22,13 @@ export default (props) => {
 
   return (
     <object
-      data={link} 
+      data={ fileUrl } 
       type="application/pdf"
       width="100%"
       height="98%" // TODO hide right scrollbar
     >
       <Typography variant="subtitle1" className={classes.message}>
-        Rendering failed. <Link href={ link }>Download file</Link>.
+        Rendering failed. <Link href={ fileUrl }>Download file</Link>.
       </Typography>
     </object>
   )

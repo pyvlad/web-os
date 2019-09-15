@@ -10,11 +10,11 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default () => {
+export default ({viewerType}) => {
   const classes = useStyles()
 
   return <iframe 
-    src={process.env.PUBLIC_URL + "/#/files/"} // TODO: how not to hardcode hash tag?
+    src={process.env.PUBLIC_URL + `/#/files/${viewerType}`} // TODO: how not to hardcode hash tag?
     title="files" 
     className={classes.frame}>
   </iframe>

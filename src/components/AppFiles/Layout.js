@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2)
   },
   rightPane: {
-    minHeight: "400px",
+    minHeight: "350px",
     backgroundColor: theme.palette.background.paper
   }
 }))

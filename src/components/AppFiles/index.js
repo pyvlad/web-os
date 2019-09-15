@@ -1,2 +1,7 @@
-import FilesApp from './FilesApp'
-export default FilesApp
+import React from 'react'
+import AppFiles from './AppFiles'
+
+
+export default ({match}) => {
+  return <AppFiles viewerType={match.params.viewerType} />
+}
