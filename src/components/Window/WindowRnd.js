@@ -8,10 +8,10 @@ export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      x: 100,
-      y: 100,
-      width: 400,
-      height: 400
+      x: props.desktopWidth / 6,
+      y: props.desktopHeight / 6,
+      width: props.desktopWidth * 2 / 3,
+      height: props.desktopHeight * 2 / 3
     }
     this.handleMaximize = this.handleMaximize.bind(this)
   }
