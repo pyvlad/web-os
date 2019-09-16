@@ -1,2 +1,2 @@
-import Clock from './Clock'
+import Clock from './ClockSmart'
 export default Clock

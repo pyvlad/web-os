@@ -13,7 +13,7 @@ export default (props) => {
       return <ExampleApp />
 
     case 'clock':
-      return <ClockApp size={300} />
+      return <ClockApp />
 
     case 'mail':
       return <MailApp />
