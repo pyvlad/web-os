@@ -10,19 +10,19 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: "space-between",
     alignItems: "stretch",
-    width: "100%",
     height: "100%"
   },
   clock: {
     flex: 1,
-    backgroundColor: theme.palette.background.default,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "black",
+    padding: theme.spacing(2)
   },
   text: {
     flex: 0,
-    backgroundColor: theme.palette.grey[800],
+    backgroundColor: "#28170b",
     color: theme.palette.primary.contrastText,
     padding: theme.spacing(2)
   }

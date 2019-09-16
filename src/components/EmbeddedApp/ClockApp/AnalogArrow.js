@@ -17,7 +17,7 @@ export default (props) => {
     transform: `rotate(${rotate}deg)`,
     transformOrigin: "50% 0%",
     borderRadius: "10px",
-    backgroundColor: "#eee"
+    backgroundColor: "#ccc"
   }
 
   return (

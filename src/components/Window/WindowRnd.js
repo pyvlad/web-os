@@ -9,9 +9,9 @@ export default class extends React.Component {
     super(props)
     this.state = {
       x: props.desktopWidth / 6,
-      y: props.desktopHeight / 6,
+      y: props.desktopHeight / 10,
       width: props.desktopWidth * 2 / 3,
-      height: props.desktopHeight * 2 / 3
+      height: props.desktopHeight * 4 / 5
     }
     this.handleMaximize = this.handleMaximize.bind(this)
   }
