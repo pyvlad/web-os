@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/web-os/static/js/main.1b53bf0d.chunk.js",
-    "main.js.map": "/web-os/static/js/main.1b53bf0d.chunk.js.map",
+    "main.js": "/web-os/static/js/main.ab349403.chunk.js",
+    "main.js.map": "/web-os/static/js/main.ab349403.chunk.js.map",
     "runtime~main.js": "/web-os/static/js/runtime~main.59ae46c5.js",
     "runtime~main.js.map": "/web-os/static/js/runtime~main.59ae46c5.js.map",
     "static/css/2.282bacd2.chunk.css": "/web-os/static/css/2.282bacd2.chunk.css",
-    "static/js/2.208878d2.chunk.js": "/web-os/static/js/2.208878d2.chunk.js",
-    "static/js/2.208878d2.chunk.js.map": "/web-os/static/js/2.208878d2.chunk.js.map",
+    "static/js/2.c5590a30.chunk.js": "/web-os/static/js/2.c5590a30.chunk.js",
+    "static/js/2.c5590a30.chunk.js.map": "/web-os/static/js/2.c5590a30.chunk.js.map",
     "index.html": "/web-os/index.html",
-    "precache-manifest.72e9a4e440c935798756302b5333c388.js": "/web-os/precache-manifest.72e9a4e440c935798756302b5333c388.js",
+    "precache-manifest.0ccd022cd7dbbf264ff2e2098932e342.js": "/web-os/precache-manifest.0ccd022cd7dbbf264ff2e2098932e342.js",
     "service-worker.js": "/web-os/service-worker.js",
     "static/css/2.282bacd2.chunk.css.map": "/web-os/static/css/2.282bacd2.chunk.css.map",
     "static/media/index.css": "/web-os/static/media/roboto-latin-900italic.ebf6d164.woff2"
