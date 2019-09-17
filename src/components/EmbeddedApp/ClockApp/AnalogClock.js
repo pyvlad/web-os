@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import AnalogArrow from './AnalogArrow'
-import svgImage from './svgImage.js'
+import clockDisplay from './clockDisplay.svg'
 
 
 const useStyles = makeStyles(theme => ({
@@ -11,6 +11,12 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "300px",
     maxHeight: "300px",
     lineHeight: 0 // for some reason it otherwise streches container vertically a bit
+  },
+  displayImg: {
+    width: "100%"
+    // "width" sets an explicit dimension for the image. 
+    // Setting only width (and not height) will cause the image to scale proportionally, 
+    // while defining both will stretch the image.
   }
 }))
 
@@ -25,7 +31,7 @@ export default (props) => {
 
   return (
     <div className={classes.display}>
-      <div dangerouslySetInnerHTML={{__html: svgImage}}></div>
+      <img src={clockDisplay} alt="" className={classes.displayImg} />
       <AnalogArrow length={35} width={3} rotate={hoursRotate} />
       <AnalogArrow length={45} width={2} rotate={minutesRotate} />
       <AnalogArrow length={50} width={1} rotate={secondsRotate} />
