@@ -11,7 +11,8 @@ export default class extends React.Component {
       x: props.desktopWidth / 6,
       y: props.desktopHeight / 10,
       width: props.desktopWidth * 2 / 3,
-      height: props.desktopHeight * 4 / 5
+      height: props.desktopHeight * 4 / 5,
+      isDragged: false
     }
     this.handleMaximize = this.handleMaximize.bind(this)
   }
@@ -48,7 +49,8 @@ export default class extends React.Component {
           x: this.state.x, 
           y: this.state.y 
         }}
-        onDragStop={(e, d) => { this.setState({ x: d.x, y: d.y }) }}
+        onDragStart={(e) => {this.setState({isDragged: true})}}
+        onDragStop={(e, d) => { this.setState({ x: d.x, y: d.y, isDragged: false }) }}
         onResize={(e, direction, ref, delta, position) => {
           this.setState({
             width: ref.offsetWidth,
@@ -67,6 +69,7 @@ export default class extends React.Component {
         <WindowSimple 
           title={title}
           isSelected={isSelected}
+          isDragged={this.state.isDragged}
           handleClose={handleClose} 
           handleMinimize={handleHide} 
           handleMaximize={this.handleMaximize}

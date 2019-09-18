@@ -24,7 +24,17 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flex: 1,
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.background.default,
+    position: "relative"
+  },
+  contentOverlay: {
+    backgroundColor: "RGBA(0,0,0,0.5)", 
+    zIndex: 1, 
+    position: "absolute", 
+    top:0, 
+    bottom: 0, 
+    right: 0, 
+    left:0
   },
   bar: {
     backgroundColor: theme.palette.primary.main,
@@ -62,6 +72,7 @@ export default (props) => {
     children,
     title,
     isSelected,
+    isDragged,
     handleClose,
     handleMinimize,
     handleMaximize
@@ -90,6 +101,7 @@ export default (props) => {
         </Typography>
       </div>
       <div className={classes.content} >
+        { isDragged ? <div className={classes.contentOverlay}></div> : null }
         { children }
       </div>
     </div>
