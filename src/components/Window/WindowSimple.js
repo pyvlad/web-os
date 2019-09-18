@@ -13,33 +13,40 @@ const useStyles = makeStyles(theme => ({
   container: {
     height: "100%", 
     width: "100%",
-    borderColor: theme.palette.primary.main,
-    borderStyle: "solid",
+
     borderWidth: "2px",
+    borderStyle: "ridge",
+    borderColor: theme.palette.primary.light,
+    
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    overflow: "hidden"
   },
-  contentWrapper: {
+  content: {
     flex: 1,
     backgroundColor: theme.palette.background.default
   },
-  topBar: {
+  bar: {
     backgroundColor: theme.palette.primary.main,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center"
   },
-  topBarControls: {
+  barSelected: {
+    backgroundColor: theme.palette.primary.dark
+  },
+  controls: {
     display: "flex",
     justifyContent: "flex-start",
     flexWrap: "nowrap"
   },
-  control: {
+  controlItem: {
     color: theme.palette.primary.contrastText,
     margin: 0,
     padding: 0
   },
-  topBarTitle: {
+  title: {
+    color: theme.palette.primary.contrastText,
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
@@ -62,27 +69,27 @@ export default (props) => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.topBar}>
-        <div className={classes.topBarControls}>
-          <IconButton size="small" className={classes.control} onClick={handleClose}>
+      <div className={[classes.bar, isSelected ? classes.barSelected : ""].join(" ")}>
+        <div className={classes.controls}>
+          <IconButton size="small" className={classes.controlItem} onClick={handleClose}>
             <CloseIcon/>
           </IconButton>
-          <IconButton size="small" className={classes.control} onClick={handleMinimize}>
+          <IconButton size="small" className={classes.controlItem} onClick={handleMinimize}>
             <MinimizeIcon/>
           </IconButton>
-          <IconButton size="small" className={classes.control} onClick={handleMaximize}>
+          <IconButton size="small" className={classes.controlItem} onClick={handleMaximize}>
             <CropSquareIcon/>
           </IconButton>
         </div>
         <Typography 
-          variant={"h6"}
+          variant={"body2"}
           color={isSelected ? "textPrimary" : "textSecondary"}
-          className={classes.topBarTitle}
+          className={classes.title}
         >
           { title }
         </Typography>
       </div>
-      <div className={classes.contentWrapper}>
+      <div className={classes.content} >
         { children }
       </div>
     </div>
