@@ -35,6 +35,7 @@ export default (props) => {
 
   const toolbar = <Toolbar
     windows={windows}
+    selectedWindowId={selectedWindow}
     handleWindowCreate={handleWindowCreate}
     handleWindowSelect={handleWindowSelect}
   />

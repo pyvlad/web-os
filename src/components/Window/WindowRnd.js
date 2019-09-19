@@ -35,6 +35,7 @@ export default class extends React.Component {
       title, 
       isSelected, 
       handleClose,
+      handleSelect,
       handleHide,
       zIndex
     } = this.props
@@ -65,6 +66,7 @@ export default class extends React.Component {
           overflow: "hidden" /* this prevents right scrollbar from appearing */,
           zIndex: zIndex
         }}
+        onMouseDown={() => handleSelect()}
       >
         <WindowSimple 
           title={title}

@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
 export default (props) => {
   const {
     windows,
+    selectedWindowId,
     handleWindowCreate,
     handleWindowSelect
   } = props
@@ -27,14 +28,15 @@ export default (props) => {
   return (
     <Toolbar className={classes.toolbar}>
       <ToolbarMenu 
-        handleWindowCreate = {handleWindowCreate} 
+        handleWindowCreate={handleWindowCreate} 
       />
       <ToolbarWindows 
         windows={windows}
-        handleWindowSelect = {handleWindowSelect}
+        selectedWindowId={selectedWindowId}
+        handleWindowSelect={handleWindowSelect}
       />
       <ToolbarClock 
-        handleWindowCreate = {handleWindowCreate} 
+        handleWindowCreate={handleWindowCreate} 
       />
     </Toolbar>
   )

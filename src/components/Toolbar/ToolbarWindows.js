@@ -6,6 +6,9 @@ import { Button } from '@material-ui/core'
 const useStyles = makeStyles(theme => ({
   button: {
     marginRight: theme.spacing(1)
+  },
+  selected: {
+    backgroundColor: theme.palette.secondary.main
   }
 }))
 
@@ -13,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 export default (props) => {
   const { 
     windows,
+    selectedWindowId,
     handleWindowSelect
   } = props
   const classes = useStyles()
@@ -25,7 +29,9 @@ export default (props) => {
             variant="contained"
             color="primary"
             size="small"
-            className={classes.button}
+            className={[classes.button, 
+              (w.id === selectedWindowId) ? classes.selected : ""
+            ].join(" ")}
             key={w.id} 
             onClick={() => handleWindowSelect(w.id)}
           >
