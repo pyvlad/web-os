@@ -1,7 +1,7 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import PageWindows from './PageWindows'
-import AppFiles from './AppFiles'
+import FileViewer from './apps/FileViewer'
 
 
 export default () => {
@@ -11,7 +11,7 @@ export default () => {
         render={(props) => <PageWindows {...props} />}
       />
       <Route path="/files/:viewerType"
-        render={(props) => <AppFiles {...props}/>}
+        render={(props) => <FileViewer {...props}/>}
       />
       <Route render={()=>(<div>404 NOT FOUND</div>)}/>
     </Switch>

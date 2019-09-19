@@ -43,7 +43,7 @@ export default (props) => {
   const classes = useStyles()
 
   return (
-    <Button onClick={() => handleWindowCreate("Clock App", "clock")}>
+    <Button onClick={() => handleWindowCreate("Clock", "clock")}>
       <Typography 
         variant="subtitle2" 
         className={classes.time}

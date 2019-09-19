@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const ViewerCustomDumb = (props) => {
+export default (props) => {
   const {
     fileUrl,
     onDocumentLoadSuccess,
@@ -53,14 +53,19 @@ const ViewerCustomDumb = (props) => {
   const classes = useStyles()
 
   if (!fileUrl) {
-    return <Typography variant="h4" align="center" className={classes.message}>
-      Cutsom File Viewer
-    </Typography>
+    return (
+      <Typography variant="subtitle1" component="p" className={classes.message}>
+        Please select document to show. Note: this viewer will use custom PDF viewer 
+        built with react-pdf.
+      </Typography>
+    )
   }
 
-  const errorComponent = <Typography variant="subtitle1" className={classes.message}>
-    Rendering failed. <Link href={ fileUrl }>Download file</Link>.
-  </Typography>
+  const errorComponent = (
+    <Typography variant="subtitle1" component="p" className={classes.message}>
+      Rendering failed. <Link href={ fileUrl }>Download file</Link>.
+    </Typography>
+  )
 
   return (
     <div className={classes.root}>
@@ -84,37 +89,3 @@ const ViewerCustomDumb = (props) => {
     </div>
   )
 } 
-
-
-
-export default class Viewer extends React.Component {
-  state = { 
-    numPages: null, 
-    pageNumber: 1 
-  }
-
-  onDocumentLoadSuccess = ({ numPages }) => {
-    this.setState({ numPages })
-  }
-
-  goToPrevPage = () => {
-    this.setState(state => ({ pageNumber: Math.max(state.pageNumber - 1, 1) }))
-  }
-
-  goToNextPage = () => {
-    this.setState(state => ({ pageNumber: Math.min(state.pageNumber + 1, state.numPages) }))
-  }
-
-  render() {
-    const { fileUrl } = this.props
-
-    return <ViewerCustomDumb
-      fileUrl={fileUrl}
-      onDocumentLoadSuccess={this.onDocumentLoadSuccess}
-      goToPrevPage={this.goToPrevPage}
-      goToNextPage={this.goToNextPage}
-      pageNumber={this.state.pageNumber}
-      numPages={this.state.numPages}
-    />
-  }
-}

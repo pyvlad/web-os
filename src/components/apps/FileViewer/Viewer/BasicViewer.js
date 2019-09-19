@@ -5,7 +5,7 @@ import { Typography, Link } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   message: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(1)
   }
 }))
 
@@ -15,8 +15,9 @@ export default (props) => {
   const classes = useStyles()
 
   if (!fileUrl) {
-    return <Typography variant="h4" align="center" className={classes.message}>
-      File Viewer
+    return <Typography variant="subtitle1" component="p" className={classes.message}>
+      Please select a file to show. Note: this viewer will use PDF viewer 
+      built into your browser, if there is any.
     </Typography>
   }
 
@@ -25,9 +26,9 @@ export default (props) => {
       data={ fileUrl } 
       type="application/pdf"
       width="100%"
-      height="98%" // TODO hide right scrollbar
+      height="100%"
     >
-      <Typography variant="subtitle1" className={classes.message}>
+      <Typography variant="subtitle1" component="p" className={classes.message}>
         Rendering failed. <Link href={ fileUrl }>Download file</Link>.
       </Typography>
     </object>
