@@ -27,8 +27,18 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.default,
     position: "relative"
   },
-  contentOverlay: {
-    backgroundColor: "RGBA(0,0,0,0.5)", 
+  overlayOnDrag: {
+    backgroundColor: "RGBA(0,0,0,0.25)", 
+    zIndex: 1, 
+    position: "absolute", 
+    top:0, 
+    bottom: 0, 
+    right: 0, 
+    left:0
+  },
+  overlayOnNotSelected: {
+    /* without this overlay resizing breaks when mouse gets over an iframe */
+    backgroundColor: "RGBA(0,0,0,0)", 
     zIndex: 1, 
     position: "absolute", 
     top:0, 
@@ -101,7 +111,8 @@ export default (props) => {
         </Typography>
       </div>
       <div className={classes.content} >
-        { isDragged ? <div className={classes.contentOverlay}></div> : null }
+        { isDragged ? <div className={classes.overlayOnDrag }></div> : null }
+        { isSelected ? null : <div className={classes.overlayOnNotSelected }></div> }
         { children }
       </div>
     </div>
