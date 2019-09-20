@@ -31,7 +31,7 @@ export default (props) => {
 
   return (
     <div className={classes.display}>
-      <img src={clockDisplay} alt="" className={classes.displayImg} />
+      <img src={clockDisplay} alt="" className={classes.displayImg} draggable="false" />
       <AnalogArrow length={35} width={3} rotate={hoursRotate} />
       <AnalogArrow length={45} width={2} rotate={minutesRotate} />
       <AnalogArrow length={50} width={1} rotate={secondsRotate} />
