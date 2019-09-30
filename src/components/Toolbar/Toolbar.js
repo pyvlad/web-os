@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Toolbar } from '@material-ui/core'
 
 import ToolbarMenu from './ToolbarMenu'
 import ToolbarClock from './ToolbarClock'
@@ -11,7 +10,10 @@ const useStyles = makeStyles(theme => ({
   toolbar: {
     backgroundColor: theme.palette.primary.dark,
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center",
+    overflow: "hidden",
+    height: 48
   }
 }))
 
@@ -26,7 +28,7 @@ export default (props) => {
   const classes = useStyles()
   
   return (
-    <Toolbar className={classes.toolbar}>
+    <div className={classes.toolbar}>
       <ToolbarMenu 
         handleWindowCreate={handleWindowCreate} 
       />
@@ -38,6 +40,6 @@ export default (props) => {
       <ToolbarClock 
         handleWindowCreate={handleWindowCreate} 
       />
-    </Toolbar>
+    </div>
   )
 }

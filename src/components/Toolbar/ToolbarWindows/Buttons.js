@@ -4,8 +4,17 @@ import { Button } from '@material-ui/core'
 
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    whiteSpace: "nowrap",
+    overflow: "auto"
+  },
   button: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
+    maxWidth: 100,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    display: "inline"
   },
   selected: {
     backgroundColor: theme.palette.secondary.main
@@ -22,7 +31,7 @@ export default (props) => {
   const classes = useStyles()
 
   return (
-    <div>
+    <div className={classes.container}>
       {
         windows.map((w) => (
           <Button 
