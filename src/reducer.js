@@ -26,13 +26,6 @@ export default (state=initialState, action) => {
         backgroundImageUrl: action.url
       }
 
-    case 'SET_DESKTOP_SIZE':
-      return {
-        ...state,
-        desktopWidth: action.width,
-        desktopHeight: action.height
-      }
-
     case 'SET_IS_SETTINGS_MENU_OPEN':
       return {
         ...state,

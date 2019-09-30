@@ -8,13 +8,15 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: (bgType === "color" ? bgColor : "transparent"),
     backgroundImage: (bgType === "image" ? `url(${bgUrl})` : null),
     // take full height of the container (height: "100%" doesn't work in Chrome)
+    // NOTE: rnd window's 'bounds = "parent"' requires this 
+    // to be a positioned element as well (absolute or relative) 
     position: "absolute",   
     top: 0,
     right: 0,
     bottom: 0,
-    left: 0
-    // note: rnd window 'bounds = "parent"' require this 
-    // to be a positioned element as well (absolute or relative) 
+    left: 0,
+    overflow: "hidden"  
+    // otherwise, windows size jumps on resize as scrollbar appears and disappears
   })
 }))
 
