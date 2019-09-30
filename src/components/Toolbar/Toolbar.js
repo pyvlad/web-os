@@ -23,7 +23,8 @@ export default (props) => {
     windows,
     selectedWindowId,
     handleWindowCreate,
-    handleWindowSelect
+    handleWindowSelect,
+    handleWindowClose
   } = props
   const classes = useStyles()
   
@@ -36,6 +37,7 @@ export default (props) => {
         windows={windows}
         selectedWindowId={selectedWindowId}
         handleWindowSelect={handleWindowSelect}
+        handleWindowClose={handleWindowClose}
       />
       <ToolbarClock 
         handleWindowCreate={handleWindowCreate} 

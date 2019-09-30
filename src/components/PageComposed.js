@@ -38,6 +38,7 @@ export default (props) => {
     selectedWindowId={selectedWindow}
     handleWindowCreate={handleWindowCreate}
     handleWindowSelect={handleWindowSelect}
+    handleWindowClose={handleWindowClose}
   />
   
   return (
