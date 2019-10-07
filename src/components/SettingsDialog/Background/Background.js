@@ -2,22 +2,31 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { 
   TextField,
+  Button,
   Radio,
   RadioGroup,
   FormHelperText,
   FormControlLabel,
   FormControl,
-  FormLabel
+  FormLabel,
+  Snackbar
 } from '@material-ui/core'
 
 
 const useStyles = makeStyles(theme => ({
+  container: {
+    maxWidth: 600,
+    padding: theme.spacing(3)
+  },
   formControl: {
-    margin: theme.spacing(3),
+    margin: "auto"
   },
   group: {
     margin: theme.spacing(1, 0),
   },
+  button:{ 
+    maxWidth: 200
+  }
 }))
 
 
@@ -33,6 +42,7 @@ export default (props) => {
   } = props
   const classes = useStyles()
   const [state, setState] = React.useState({bgType, bgColor, bgUrl})
+  const [isSnackbarOpen, setSnackbarOpen] = React.useState(false)
 
   const handleChange = (name) => ({target: {value}}) => {
     setState({
@@ -45,48 +55,61 @@ export default (props) => {
     setBackgroundType(state.bgType)
     setBackgroundColor(state.bgColor)
     setBackgroundImage(state.bgUrl)
+    setSnackbarOpen(true)
   }
 
   return (
-    <form>
-      <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Background Type</FormLabel>
-        <RadioGroup
-          aria-label="background-type"
-          name="backgroundType"
-          className={classes.group}
-          value={state.bgType}
-          onChange={handleChange('bgType')}
-        >
-          <FormControlLabel 
-            value="color" 
-            control={<Radio />} 
-            label="Color" 
-          />
-          <TextField 
-            disabled={ (state.bgType === "color") ? false : true } 
-            label="Background Color"
-            value={state.bgColor}
-            onChange={handleChange('bgColor')}
-          />
-          <FormControlLabel 
-            value="image" 
-            control={<Radio />} 
-            label="Image" 
-          />
-          <TextField 
-            disabled={ (state.bgType === "image") ? false : true } 
-            label="Background Image URL"
-            value={state.bgUrl}
-            onChange={handleChange('bgUrl')}
-          />
-        </RadioGroup>
-        <FormHelperText>You can configure your background here.</FormHelperText>
-        <button onClick={handleSubmit}>
-          Save
-        </button>
-      </FormControl>
-      
-    </form>
+    <React.Fragment>
+      <form className={classes.container}>
+        <FormControl component="fieldset" className={classes.formControl} fullWidth>
+          <FormLabel component="legend">Background Type</FormLabel>
+          <FormHelperText>You can configure desktop background here.</FormHelperText>
+          <RadioGroup
+            aria-label="background-type"
+            name="backgroundType"
+            className={classes.group}
+            value={state.bgType}
+            onChange={handleChange('bgType')}
+          >
+            <FormControlLabel 
+              value="color" 
+              control={<Radio />} 
+              label="Color" 
+            />
+            <TextField 
+              disabled={ (state.bgType === "color") ? false : true } 
+              label="Background Color"
+              value={state.bgColor}
+              onChange={handleChange('bgColor')}
+            />
+            <FormControlLabel 
+              value="image" 
+              control={<Radio />} 
+              label="Image" 
+            />
+            <TextField 
+              disabled={ (state.bgType === "image") ? false : true } 
+              label="Background Image URL"
+              value={state.bgUrl}
+              onChange={handleChange('bgUrl')}
+            />
+          </RadioGroup>
+          <Button variant="contained" color="primary" className={classes.button} 
+              onClick={handleSubmit}>
+            Save
+          </Button>
+        </FormControl>
+      </form>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={isSnackbarOpen}
+        autoHideDuration={2000}
+        onClose={() => {setSnackbarOpen(false)}}
+        message={<span>Settings updated.</span>}
+      />
+    </React.Fragment>
   )
 }
