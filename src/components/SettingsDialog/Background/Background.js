@@ -13,6 +13,25 @@ import {
 } from '@material-ui/core'
 
 
+const images = [
+  {
+    id: "cat",
+    url: process.env.PUBLIC_URL + "/files/cat.jpeg",
+    label: "Cat"
+  },
+  {
+    id: "dusk",
+    url: process.env.PUBLIC_URL + "/files/dusk.jpeg",
+    label: "Dusk"
+  },
+  {
+    id: "space",
+    url: process.env.PUBLIC_URL + "/files/hubble-extreme-deep-field.jpg",
+    label: "Space"
+  }
+]
+
+
 const useStyles = makeStyles(theme => ({
   container: {
     maxWidth: 600,
@@ -24,8 +43,14 @@ const useStyles = makeStyles(theme => ({
   group: {
     margin: theme.spacing(1, 0),
   },
+  images: {
+    margin: theme.spacing(2),
+  },
   button:{ 
     maxWidth: 200
+  },
+  disabled: {
+    color: "RGBA(0,0,0,0.5)"
   }
 }))
 
@@ -36,9 +61,7 @@ export default (props) => {
     bgType,
     bgColor, 
     bgUrl, 
-    setBackgroundType,
-    setBackgroundColor,
-    setBackgroundImage
+    setBackground
   } = props
   const classes = useStyles()
   const [state, setState] = React.useState({bgType, bgColor, bgUrl})
@@ -52,9 +75,11 @@ export default (props) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    setBackgroundType(state.bgType)
-    setBackgroundColor(state.bgColor)
-    setBackgroundImage(state.bgUrl)
+    setBackground({
+      type: state.bgType, 
+      color: state.bgColor, 
+      imageUrl: state.bgUrl
+    })
     setSnackbarOpen(true)
   }
 
@@ -87,9 +112,27 @@ export default (props) => {
               control={<Radio />} 
               label="Image" 
             />
+              <RadioGroup
+                name="bgImageUrl"
+                value={(state.bgType === "image") ? state.bgUrl : ""}
+                className={classes.images}
+                onChange={handleChange('bgUrl')}
+              >
+                {
+                  images.map((img) => 
+                    <FormControlLabel 
+                      key={img.id}
+                      control={<Radio />}
+                      disabled={ (state.bgType === "image") ? false : true } 
+                      value={img.url} 
+                      label={img.label}
+                    />
+                  )
+                }
+              </RadioGroup>
             <TextField 
               disabled={ (state.bgType === "image") ? false : true } 
-              label="Background Image URL"
+              label="Custom URL"
               value={state.bgUrl}
               onChange={handleChange('bgUrl')}
             />

@@ -1,25 +1,19 @@
 import Background from './Background'
 import { connect } from 'react-redux'
-import { 
-  setBackgroundType,
-  setBackgroundColor, 
-  setBackgroundImage 
-} from '../../../actions'
+import { setBackground } from '../../../actions'
 
 
 const mapStateToProps = (state) => (
   {
-    bgType: state.backgroundType,
-    bgColor: state.backgroundColor,
-    bgUrl: state.backgroundImageUrl
+    bgType: state.background.type,
+    bgColor: state.background.color,
+    bgUrl: state.background.imageUrl
   }
 )
 
 const mapDispatchToProps = (dispatch) => (
   {
-    setBackgroundType: (bgType) => dispatch(setBackgroundType(bgType)),
-    setBackgroundColor: (color) => dispatch(setBackgroundColor(color)),
-    setBackgroundImage: (url) => dispatch(setBackgroundImage(url)),
+    setBackground: (background) => dispatch(setBackground(background))
   }
 )
 

@@ -1,29 +1,19 @@
 const initialState = {
-  backgroundType: "image",
-  backgroundColor: "#ddf",
-  backgroundImageUrl: process.env.PUBLIC_URL + "/files/hubble-extreme-deep-field.jpg",
+  background: {
+    type: "image",
+    color: "#ddf",
+    imageUrl: process.env.PUBLIC_URL + "/files/hubble-extreme-deep-field.jpg"
+  },
   isSettingsMenuOpen: false
 }
 
 export default (state=initialState, action) => {
   switch (action.type) {
 
-    case 'SET_BACKGROUND_TYPE':
+    case 'SET_BACKGROUND':
       return {
         ...state,
-        backgroundType: action.bgType
-      }
-
-    case 'SET_BACKGROUND_COLOR': 
-      return {
-        ...state, 
-        backgroundColor: action.color
-      }
-
-    case 'SET_BACKGROUND_IMAGE':
-      return {
-        ...state,
-        backgroundImageUrl: action.url
+        background: action.background
       }
 
     case 'SET_IS_SETTINGS_MENU_OPEN':

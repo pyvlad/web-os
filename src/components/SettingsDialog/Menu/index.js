@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => (
   {
-    bgType: state.backgroundType,
-    bgColor: state.backgroundColor,
-    bgUrl: state.backgroundImageUrl
+    bgType: state.background.type,
+    bgColor: state.background.color,
+    bgUrl: state.background.imageUrl
   }
 )
 
