@@ -51,6 +51,15 @@ const useStyles = makeStyles(theme => ({
   },
   disabled: {
     color: "RGBA(0,0,0,0.5)"
+  },
+  radioContainer: {
+    display: "flex",
+    alignItems: "center"
+  },
+  radioImg: {
+    maxWidth: 60,
+    maxHeight: 60,
+    margin: theme.spacing(1)
   }
 }))
 
@@ -125,7 +134,12 @@ export default (props) => {
                       control={<Radio />}
                       disabled={ (state.bgType === "image") ? false : true } 
                       value={img.url} 
-                      label={img.label}
+                      label={
+                        <div className={classes.radioContainer}>
+                          <img src={img.url} className={classes.radioImg}/>
+                          <div>{img.label}</div>
+                        </div>
+                      }
                     />
                   )
                 }
